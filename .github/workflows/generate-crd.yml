@@ -40,7 +40,6 @@ jobs:
           ls $(pwd)
           docker run \
             --rm \
-            -w "$(pwd)" \
             -v /var/run/docker.sock:/var/run/docker.sock \
             -v "$(pwd)":"$(pwd)" \
             --network host \
