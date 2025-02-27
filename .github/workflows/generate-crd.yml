@@ -35,9 +35,9 @@ jobs:
           test -z ${{ github.event.inputs.crdApiGroupPrefix }} || export CRD_API_GROUP_ARGS="-n ${{ github.event.inputs.crdApiGroupPrefix }}"
           echo "CRD Src Args: ${CRD_SRC_ARGS}"
           echo "CRD Api Group Prefix Args: ${CRD_API_GROUP_ARGS}"
-          mkdir -p $(pwd)/${GEN_DIR}/gen/src/main/java/org/apache/hadoop/yarn/server/router/models
           echo $(pwd)
           ls $(pwd)
+          mkdir -p $(pwd)/${GEN_DIR}/gen/src/main/java/org/apache/hadoop/yarn/server/router/models
           docker run \
             --rm \
             -v /var/run/docker.sock:/var/run/docker.sock \
@@ -49,9 +49,11 @@ jobs:
             ${CRD_API_GROUP_ARGS} \
             -p ${{ github.event.inputs.generatingJavaPackage }} \
             -o "$(pwd)/${GEN_DIR}"
+          echo $(pwd)
+          echo $(GEN_DIR)
           ls -lh $(pwd)/${GEN_DIR}
       - uses: actions/upload-artifact@v4
         with:
           name: generated-java-crd-model
           path: |
-            /home/runner/work/k8s-java/k8s-java//crd-gen/gen
+            /home/runner/work/k8s-java/k8s-java/crd-gen
