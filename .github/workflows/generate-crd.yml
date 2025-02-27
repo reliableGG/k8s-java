@@ -40,6 +40,7 @@ jobs:
           ls $(pwd)
           docker run \
             --rm \
+            -w "$(pwd)" \
             -v /var/run/docker.sock:/var/run/docker.sock \
             -v "$(pwd)":"$(pwd)" \
             --network host \
@@ -54,4 +55,4 @@ jobs:
         with:
           name: generated-java-crd-model
           path: |
-            $(pwd)/crd-gen
+            /home/runner/work/k8s-java/k8s-java/crd-gen/
