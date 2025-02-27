@@ -50,10 +50,15 @@ jobs:
             -p ${{ github.event.inputs.generatingJavaPackage }} \
             -o "$(pwd)/${GEN_DIR}"
           echo $(pwd)
-          echo $(GEN_DIR)
+          echo ${GEN_DIR}
+          echo "-----"
           ls -lh $(pwd)/${GEN_DIR}
+          echo "-----"
+          ls /output_dir
+          tree $(pwd)/${GEN_DIR}
+          tree /output_dir
       - uses: actions/upload-artifact@v4
         with:
           name: generated-java-crd-model
           path: |
-            /home/runner/work/k8s-java/k8s-java/crd-gen
+            /output_dir
