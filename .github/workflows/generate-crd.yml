@@ -37,7 +37,8 @@ jobs:
           echo "CRD Api Group Prefix Args: ${CRD_API_GROUP_ARGS}"
           echo $(pwd)
           ls $(pwd)
-          mkdir -p $(pwd)/${GEN_DIR}/gen/src/main/java/org/apache/hadoop/yarn/server/router/models
+          cat ${CRD_SRC_ARGS}
+          mkdir $(pwd)${GEN_DIR}
           docker run \
             --rm \
             -v /var/run/docker.sock:/var/run/docker.sock \
@@ -48,13 +49,13 @@ jobs:
             ${CRD_SRC_ARGS} \
             ${CRD_API_GROUP_ARGS} \
             -p ${{ github.event.inputs.generatingJavaPackage }} \
-            -o "$(pwd)/${GEN_DIR}"
+            -o "$(pwd)${GEN_DIR}"
           echo $(pwd)
           echo ${GEN_DIR}
           echo "-----"
-          ls -lh $(pwd)/${GEN_DIR}
+          ls -lh $(pwd)${GEN_DIR}
           echo "-----"
-          tree $(pwd)/${GEN_DIR}
+          tree $(pwd)${GEN_DIR}
       - uses: actions/upload-artifact@v4
         with:
           name: generated-java-crd-model
