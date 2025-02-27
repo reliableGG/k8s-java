@@ -54,4 +54,4 @@ jobs:
         with:
           name: generated-java-crd-model
           path: |
-            ${{ $(pwd)/env.GEN_DIR }}
+            $(pwd)/crd-gen
