@@ -54,11 +54,9 @@ jobs:
           echo "-----"
           ls -lh $(pwd)/${GEN_DIR}
           echo "-----"
-          ls /output_dir
           tree $(pwd)/${GEN_DIR}
-          tree /output_dir
       - uses: actions/upload-artifact@v4
         with:
           name: generated-java-crd-model
           path: |
-            /output_dir
+            /home/runner/work/k8s-java/k8s-java/crd-gen
