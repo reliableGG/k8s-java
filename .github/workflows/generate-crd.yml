@@ -36,7 +36,6 @@ jobs:
           echo "CRD Src Args: ${CRD_SRC_ARGS}"
           echo "CRD Api Group Prefix Args: ${CRD_API_GROUP_ARGS}"
           mkdir -p $(pwd)/${GEN_DIR}/gen/src/main/java/org/apache/hadoop/yarn/server/router/models
-          mkdir -p ${GEN_DIR}
           echo $(pwd)
           ls $(pwd)
           docker run \
