@@ -18,7 +18,7 @@ on:
 env:
   IMAGE_NAME: ghcr.io/kubernetes-client/java/crd-model-gen
   IMAGE_TAG: v1.0.6
-  GEN_DIR: $(pwd)/crd-gen
+  GEN_DIR: /crd-gen
 
 permissions:
   contents: read
@@ -49,8 +49,8 @@ jobs:
             ${CRD_SRC_ARGS} \
             ${CRD_API_GROUP_ARGS} \
             -p ${{ github.event.inputs.generatingJavaPackage }} \
-            -o "${GEN_DIR}"
-          ls -lh ${GEN_DIR}
+            -o "$(pwd)/${GEN_DIR}"
+          ls -lh $(pwd)/${GEN_DIR}
       - uses: actions/upload-artifact@v4
         with:
           name: generated-java-crd-model
